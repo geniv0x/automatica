@@ -12,6 +12,7 @@ from modules import (
     RedirectDetector,
     HostsManager,
     ExploitSearcher,
+    Gobuster,
 )
 
 
@@ -28,6 +29,7 @@ def main():
         RedirectDetector(),
         HostsManager(),
         ExploitSearcher(),
+        Gobuster(),
     ]
 
     target = Target(ip=ip, modules=modules)
