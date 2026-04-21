@@ -19,7 +19,7 @@ class NmapScanner(BaseModule):
     def run(self, target) -> None:
         """Run nmap -sSVC and populate target.services."""
         cmd = [
-            "nmap", "-sSVC",
+            "nmap", "-sSVC", "-Pn",
             f"-p{self.ports}",
             f"-T{self.timing}",
             "--open", "-oX", "-",
