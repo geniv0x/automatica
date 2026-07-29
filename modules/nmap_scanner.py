@@ -22,7 +22,7 @@ class NmapScanner(BaseModule):
             "nmap", "-sSVC", "-Pn",
             f"-p{self.ports}",
             f"-T{self.timing}",
-            "--open", "-oX", "-",
+            "-oX", "-",
             target.ip
         ]
         self.log.info(f"Running: {' '.join(cmd)}")
