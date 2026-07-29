@@ -29,22 +29,26 @@ class Gobuster(BaseModule):
             self.log.info("No HTTP services, skipping gobuster")
             return
 
-        urls = self._build_urls(target.ip, target.domains, http_services)
+        urls = self._build_urls(target.domains, http_services, ip_fallback=target.ip)
+
+        if target.domains:
+            self.log.info(
+                f"Starting directory/file enumeration after subdomain phase on {len(target.domains)} host(s)"
+            )
 
         for url in urls:
             self._scan(url, target)
 
-    def _build_urls(self, ip: str, domains: list[str], services) -> list[str]:
+    def _build_urls(self, domains: list[str], services, ip_fallback: str) -> list[str]:
         urls = []
 
         for svc in services:
             scheme = "https" if svc.port in (443, 8443) else "http"
             port_suffix = "" if svc.port in (80, 443) else f":{svc.port}"
 
-            urls.append(f"{scheme}://{ip}{port_suffix}")
-
-            for domain in domains:
-                urls.append(f"{scheme}://{domain}{port_suffix}")
+            hosts = domains if domains else [ip_fallback]
+            for host in hosts:
+                urls.append(f"{scheme}://{host}{port_suffix}")
 
         return list(dict.fromkeys(urls))
 

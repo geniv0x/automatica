@@ -12,6 +12,7 @@ from modules import (
     RedirectDetector,
     HostsManager,
     ExploitSearcher,
+    SubdomainScanner,
     Gobuster,
 )
 
@@ -28,6 +29,7 @@ def main():
         NmapScanner(ports="-", timing="4"),
         RedirectDetector(),
         HostsManager(),
+        SubdomainScanner(),
         ExploitSearcher(),
         Gobuster(),
     ]
