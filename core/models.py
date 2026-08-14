@@ -39,6 +39,7 @@ class Service:
     HTTP_PORTS = {80, 443, 8080, 8443}
     SMB_PORTS = {139, 445}
     SMB_SERVICE_NAMES = ("microsoft-ds", "netbios-ssn", "smb", "samba")
+    FTP_PORTS = {21}
 
     # words nmap appends to products but exploit-db titles usually omit
     # (e.g. 'Apache httpd', 'Microsoft IIS httpd') — dropped in fallback queries
@@ -54,6 +55,10 @@ class Service:
         return self.port in self.SMB_PORTS or any(
             n in name for n in self.SMB_SERVICE_NAMES
         )
+
+    @property
+    def is_ftp(self) -> bool:
+        return self.port in self.FTP_PORTS or "ftp" in self.name.lower()
 
     @property
     def version_query(self) -> str:

@@ -15,6 +15,7 @@ from modules import (
     SubdomainScanner,
     Gobuster,
     SmbScanner,
+    FtpScanner,
 )
 
 
@@ -29,6 +30,7 @@ def main():
     modules = [
         NmapScanner(ports="-", timing="4"),
         SmbScanner(),
+        FtpScanner(),
         RedirectDetector(),
         HostsManager(),
         SubdomainScanner(),
