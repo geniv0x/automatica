@@ -37,6 +37,8 @@ class Service:
     exploits: list[Exploit] = field(default_factory=list)
 
     HTTP_PORTS = {80, 443, 8080, 8443}
+    SMB_PORTS = {139, 445}
+    SMB_SERVICE_NAMES = ("microsoft-ds", "netbios-ssn", "smb")
 
     # words nmap appends to products but exploit-db titles usually omit
     # (e.g. 'Apache httpd', 'Microsoft IIS httpd') — dropped in fallback queries
@@ -45,6 +47,13 @@ class Service:
     @property
     def is_http(self) -> bool:
         return self.port in self.HTTP_PORTS or "http" in self.name.lower()
+
+    @property
+    def is_smb(self) -> bool:
+        name = self.name.lower()
+        return self.port in self.SMB_PORTS or any(
+            n in name for n in self.SMB_SERVICE_NAMES
+        )
 
     @property
     def version_query(self) -> str:

@@ -14,6 +14,7 @@ from modules import (
     ExploitSearcher,
     SubdomainScanner,
     Gobuster,
+    SmbScanner,
 )
 
 
@@ -27,6 +28,7 @@ def main():
     # module pipeline — order matters
     modules = [
         NmapScanner(ports="-", timing="4"),
+        SmbScanner(),
         RedirectDetector(),
         HostsManager(),
         SubdomainScanner(),

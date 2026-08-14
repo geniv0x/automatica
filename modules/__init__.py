@@ -4,6 +4,7 @@ from modules.hosts_manager import HostsManager
 from modules.exploit_searcher import ExploitSearcher
 from modules.subdomain_scanner import SubdomainScanner
 from modules.gobuster import Gobuster
+from modules.smb_scanner import SmbScanner
 
 __all__ = [
     "NmapScanner",
@@ -12,4 +13,5 @@ __all__ = [
     "ExploitSearcher",
     "SubdomainScanner",
     "Gobuster",
+    "SmbScanner",
 ]
