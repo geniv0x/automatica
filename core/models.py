@@ -38,7 +38,7 @@ class Service:
 
     HTTP_PORTS = {80, 443, 8080, 8443}
     SMB_PORTS = {139, 445}
-    SMB_SERVICE_NAMES = ("microsoft-ds", "netbios-ssn", "smb")
+    SMB_SERVICE_NAMES = ("microsoft-ds", "netbios-ssn", "smb", "samba")
 
     # words nmap appends to products but exploit-db titles usually omit
     # (e.g. 'Apache httpd', 'Microsoft IIS httpd') — dropped in fallback queries
