@@ -16,6 +16,7 @@ from modules import (
     Gobuster,
     SmbScanner,
     FtpScanner,
+    NfsScanner,
 )
 
 
@@ -31,6 +32,7 @@ def main():
         NmapScanner(ports="-", timing="4"),
         SmbScanner(),
         FtpScanner(),
+        NfsScanner(),
         RedirectDetector(),
         HostsManager(),
         SubdomainScanner(),

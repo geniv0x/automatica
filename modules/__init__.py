@@ -6,6 +6,7 @@ from modules.subdomain_scanner import SubdomainScanner
 from modules.gobuster import Gobuster
 from modules.smb_scanner import SmbScanner
 from modules.ftp_scanner import FtpScanner
+from modules.nfs_scanner import NfsScanner
 
 __all__ = [
     "NmapScanner",
@@ -16,4 +17,5 @@ __all__ = [
     "Gobuster",
     "SmbScanner",
     "FtpScanner",
+    "NfsScanner",
 ]
